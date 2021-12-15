@@ -8,7 +8,7 @@
     <title>FIREE </title>
 </head>
 <style>
-    body{
+    body {
         background-color: antiquewhite;
         text-align: center;
         top: 150px;
@@ -30,12 +30,7 @@
         var player2_health = 100
 
         function myFunction() {
-            some.innerHTML = "NEXT ROUND"
 
-            if (player1_score ==3 || player1_score ==3){
-                player1_score = 0;
-                player2_score = 0;
-            }
             while (player1_health > 0 && player2_health > 0) {
                 var random1 = Math.floor(Math.random() * 6)
                 var random2 = Math.floor(Math.random() * 6)
@@ -53,19 +48,25 @@
                         wincheck()
                     }, 500);
                 }
+                winner.innerHTML = ""
+                some.innerHTML = "NEXT ROUND"
                 player1.innerHTML = "Player1 score" + " " + player1_score + " " + "having health left this time " + player1_health
                 player2.innerHTML = "Player2 score" + " " + player2_score + " " + "having health left this time " + player2_health
             }
 
         }
         function wincheck() {
-            if (player2_score ==3){
+            if (player2_score == 3) {
                 winner.innerHTML = "PLAYER 2 WON"
                 some.innerHTML = "PLAY AGAIN"
+                player2_score = 0
+                player1_score = 0
             }
-            else if(player1_score ==3){
+            else if (player1_score == 3) {
                 winner.innerHTML = "PLAYER 1 WON"
                 some.innerHTML = "PLAY AGAIN"
+                player2_score = 0
+                player1_score = 0
             }
 
             player1_health = 100
