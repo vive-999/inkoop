@@ -7,29 +7,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FIREE </title>
 </head>
+<style>
+    body{
+        background-color: antiquewhite;
+        text-align: center;
+        top: 150px;
+    }
+</style>
 
 <body>
-    <button id="some" onclick="myFunction()">Click me</button>
+    <button id="some" onclick="myFunction()">START GAME</button>
     <div class="container">
         <p id="player1">Player 1 Score: </p>
         <p id="player2">Player 2 Score: </p>
+        <span id="winner"></span>
     </div>
     <script>
-        gamegoing = true
-        var player1_score =0
+
+        var player1_score = 0
         var player2_score = 0
         var player1_health = 100
         var player2_health = 100
-        console.log('the value before clicking function is ' + player2_score, player1_score)
-
-
-
 
         function myFunction() {
-            if (player2_score ==3 || player1_score ==3){
-                content = document.querySelector('.container')
-                content.innerHTML = "GAME OVER"
-            }         
+            some.innerHTML = "NEXT ROUND"
+
+            if (player1_score ==3 || player1_score ==3){
+                player1_score = 0;
+                player2_score = 0;
+            }
             while (player1_health > 0 && player2_health > 0) {
                 var random1 = Math.floor(Math.random() * 6)
                 var random2 = Math.floor(Math.random() * 6)
@@ -37,22 +43,34 @@
                 player2_health = player2_health - random2
                 if (player1_health <= 0) {
                     player2_score = player2_score + 1;
-                   
+                    setTimeout(() => {
+                        wincheck()
+                    }, 500);
                 }
                 if (player2_health <= 0) {
-                    player1_score = player1_score +1;
-                    
+                    player1_score = player1_score + 1;
+                    setTimeout(() => {
+                        wincheck()
+                    }, 500);
+                }
+                player1.innerHTML = "Player1 score" + " " + player1_score + " " + "having health left this time " + player1_health
+                player2.innerHTML = "Player2 score" + " " + player2_score + " " + "having health left this time " + player2_health
             }
-            player1.innerHTML = "Player1 score" + " " + player1_score + " " + "having health left this time " + player1_health
-            player2.innerHTML = "Player2 score" + " " + player2_score + " " + "having health left this time " + player2_health
-           
-            
 
-            console.log('the value FTWER clicking function is ' + player2_score, player1_score)
         }
-    }
+        function wincheck() {
+            if (player2_score ==3){
+                winner.innerHTML = "PLAYER 2 WON"
+                some.innerHTML = "PLAY AGAIN"
+            }
+            else if(player1_score ==3){
+                winner.innerHTML = "PLAYER 1 WON"
+                some.innerHTML = "PLAY AGAIN"
+            }
 
-
+            player1_health = 100
+            player2_health = 100
+        }
 
     </script>
 </body>
