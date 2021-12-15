@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FIREE </title>
+</head>
+
+<body>
+    <button id="some" onclick="myFunction()">Click me</button>
+    <div class="container">
+        <p id="player1">Player 1 Score: </p>
+        <p id="player2">Player 2 Score: </p>
+    </div>
+    <script>
+        gamegoing = true
+        var player1_score =0
+        var player2_score = 0
+        var player1_health = 100
+        var player2_health = 100
+        console.log('the value before clicking function is ' + player2_score, player1_score)
+
+
+
+
+        function myFunction() {
+            if (player2_score ==3 || player1_score ==3){
+                content = document.querySelector('.container')
+                content.innerHTML = "GAME OVER"
+            }         
+            while (player1_health > 0 && player2_health > 0) {
+                var random1 = Math.floor(Math.random() * 6)
+                var random2 = Math.floor(Math.random() * 6)
+                player1_health = player1_health - random1
+                player2_health = player2_health - random2
+                if (player1_health <= 0) {
+                    player2_score = player2_score + 1;
+                   
+                }
+                if (player2_health <= 0) {
+                    player1_score = player1_score +1;
+                    
+            }
+            player1.innerHTML = "Player1 score" + " " + player1_score + " " + "having health left this time " + player1_health
+            player2.innerHTML = "Player2 score" + " " + player2_score + " " + "having health left this time " + player2_health
+           
+            
+
+            console.log('the value FTWER clicking function is ' + player2_score, player1_score)
+        }
+    }
+
+
+
+    </script>
+</body>
+
+</html>
