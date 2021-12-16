@@ -5,75 +5,26 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FIREE </title>
+    <title>Vivgame</title>
+    <link rel="stylesheet" href="index2.css">
 </head>
-<style>
-    body {
-        background-color: antiquewhite;
-        text-align: center;
-        top: 150px;
-    }
-</style>
+
 
 <body>
-    <button id="some" onclick="myFunction()">START GAME</button>
-    <div class="container">
-        <p id="player1">Player 1 Score: </p>
-        <p id="player2">Player 2 Score: </p>
-        <span id="winner"></span>
+    <div class="gameContainer">
+        <div class="scoreboard">
+
+            <button id="some" onclick="myFunction()">START GAME</button>
+            <div class="container">
+                <p id="player1" class="score">Player 1 Score: </p>
+                <p id="player2" class="score">Player 2 Score: </p>
+                <span id="winner" class="score"></span>
+            </div>
+
+        </div>
     </div>
-    <script>
+    <script src="script2.js"></script>
 
-        var player1_score = 0
-        var player2_score = 0
-        var player1_health = 100
-        var player2_health = 100
-
-        function myFunction() {
-
-            while (player1_health > 0 && player2_health > 0) {
-                var random1 = Math.floor(Math.random() * 6)
-                var random2 = Math.floor(Math.random() * 6)
-                player1_health = player1_health - random1
-                player2_health = player2_health - random2
-                if (player1_health <= 0) {
-                    player2_score = player2_score + 1;
-                    setTimeout(() => {
-                        wincheck()
-                    }, 500);
-                }
-                if (player2_health <= 0) {
-                    player1_score = player1_score + 1;
-                    setTimeout(() => {
-                        wincheck()
-                    }, 500);
-                }
-                winner.innerHTML = ""
-                some.innerHTML = "NEXT ROUND"
-                player1.innerHTML = "Player1 score" + " " + player1_score + " " + "having health left this time " + player1_health
-                player2.innerHTML = "Player2 score" + " " + player2_score + " " + "having health left this time " + player2_health
-            }
-
-        }
-        function wincheck() {
-            if (player2_score == 3) {
-                winner.innerHTML = "PLAYER 2 WON"
-                some.innerHTML = "PLAY AGAIN"
-                player2_score = 0
-                player1_score = 0
-            }
-            else if (player1_score == 3) {
-                winner.innerHTML = "PLAYER 1 WON"
-                some.innerHTML = "PLAY AGAIN"
-                player2_score = 0
-                player1_score = 0
-            }
-
-            player1_health = 100
-            player2_health = 100
-        }
-
-    </script>
 </body>
 
 </html>
